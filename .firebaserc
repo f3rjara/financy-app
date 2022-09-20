@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "financy-app-5667d": {
+      "hosting": {
+        "ingresoEgreso": [
+          "financy-app-5667d"
+        ]
+      }
+    }
+  }
+}
