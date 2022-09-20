@@ -7,11 +7,9 @@ import * as financy from './financy/financy.reducer';
 export interface AppState {
   ui: ui.State;
   user: auth.State;
-  financy: financy.State;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
   ui: ui.uiReducer,
-  user: auth.authReducer,
-  financy: financy.financyReducer
+  user: auth.authReducer
 }
