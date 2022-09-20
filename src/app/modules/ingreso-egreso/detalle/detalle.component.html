@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Detalle de ingreso egreso</h4>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Descripción</th>
+                  <th>Monto</th>
+                  <th>Tipo</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let register of financyRegisters | orderFinacyRegisters">
+                  <td>{{ register.description }}</td>
+                  <td>{{ register.amount | currency:'COP':'symbol-narrow':'4.0' }} </td>
+                  <td><span [ngClass]="{
+                      'badge text-white p-2' : true, 
+                      'bg-success': register.type == 'ingreso',
+                      'bg-danger': register.type == 'egreso'
+                    }">
+                    {{ register.type | uppercase }}</span> 
+                  </td>
+                  <td>
+                    <button type="button" class="btn mr-2 px-3 text-center btn-outline-warning"
+                            title="Editar registro"
+                            (click)="updateItem( register.uid )"> 
+                      <i class="fas fa-edit m-0"></i> 
+                    </button>
+                    <button type="button" class="btn mr-2 px-3 text-center btn-outline-danger"
+                            title="Eliminar registro"
+                            (click)="deleteItem( register.uid )"> 
+                      <i class="fas fa-trash-alt m-0"></i> 
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+
+          </div>
+        </div>
+    </div>
+</div>
+  
