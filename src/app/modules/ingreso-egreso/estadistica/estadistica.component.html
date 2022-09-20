@@ -1,45 +1,97 @@
 <div class="row">
-    <div class="col-6">
-        <div class="card card-statistics">
-          <div class="card-body">
 
-            <div class="clearfix">
-              <div class="float-left">
-                <i class="fa fa-money-bill-alt text-success icon-lg"></i>
-              </div>
-              <div class="float-right">
-                <p class="mb-0 text-right">Ingresos</p>
-                <div class="fluid-container">
-                  <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
-                </div>
-              </div>
+  <div class="col-12 col-md-6 m-1">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="fas fa-balance-scale text-warning icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Balance Total</p>
+            <div class="fluid-container">
+              <h3 [ngClass]="{'font-weight-medium text-right mb-0': true, 'text-danger': balance < 0 }">
+                {{ balance | currency: "COP":"symbol-narrow":"4.0" }} COP
+              </h3>
             </div>
-            <p class="text-muted mt-3 mb-0">
-              <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-            </p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="col-6">
-          <div class="card card-statistics">
-            <div class="card-body">
-  
-              <div class="clearfix">
-                <div class="float-left">
-                  <i class="fa fa-shipping-fast text-danger icon-lg"></i>
-                </div>
-                <div class="float-right">
-                  <p class="mb-0 text-right">Ingresos</p>
-                  <div class="fluid-container">
-                    <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
-                  </div>
-                </div>
-              </div>
-              <p class="text-muted mt-3 mb-0">
-                <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-              </p>
+  <div class="col-12 col-md-6 m-1">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="fa fa-money-bill-alt text-success icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Ingresos</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">
+                {{ ingresos | currency: "COP":"symbol-narrow":"4.0" }} COP
+              </h3>
             </div>
           </div>
         </div>
+        <p class="text-muted mt-3 mb-0" [ngPlural]="totalIngresos">
+          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i>
+          {{ totalIngresos }}
+          <ng-template ngPluralCase="=1">Registro.</ng-template>
+          <ng-template ngPluralCase="other">Registros.</ng-template>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 m-1">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="fa fa-shipping-fast text-danger icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Egresos</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">
+                {{ egresos | currency: "COP":"symbol-narrow":"4.0" }} COP
+              </h3>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted mt-3 mb-0" [ngPlural]="totalEgresos">
+          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i>
+          {{ totalEgresos }}
+          <ng-template ngPluralCase="=1">Registro.</ng-template>
+          <ng-template ngPluralCase="other">Registros.</ng-template>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 m-1">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <p class="mb-2">Grafica</p>
+          </div>
+
+          <div style="display: block">
+            <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType">
+            </canvas>
+          </div>
+
+        </div>    
+      </div>
+    </div>
+  </div>
 </div>

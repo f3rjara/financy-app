@@ -59,7 +59,12 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" [disabled]="formRegister.invalid" class="btn btn-primary submit-btn btn-block">Crear cuenta</button>
+                <button type="submit" 
+                        [disabled]="formRegister.invalid || loadingApp"
+                        class="btn btn-primary submit-btn btn-block">
+                        <span *ngIf="loadingApp"><i class="fa fa-spin fa-sync"></i> Espere</span>
+                        <span *ngIf="!loadingApp">Crear Cuenta</span>
+                </button>
               </div>
 
               <div class="text-block text-center my-3">

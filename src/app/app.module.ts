@@ -21,7 +21,9 @@ import { EstadisticaComponent } from './modules/ingreso-egreso/estadistica/estad
 import { DetalleComponent } from './modules/ingreso-egreso/detalle/detalle.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './core/store/app.reducer';
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { OrderFinacyRegistersPipe } from './core/pipes/order-finacy-registers.pipe';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -34,16 +36,22 @@ import { appReducers } from './core/store/app.reducer';
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrderFinacyRegistersPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    StoreModule.forRoot( appReducers )
+    StoreModule.forRoot( appReducers ),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
