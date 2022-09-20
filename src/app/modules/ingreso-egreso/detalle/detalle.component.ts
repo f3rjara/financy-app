@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IngresoEgreso } from 'src/app/core/models/ingreso-egreso.model';
-import { AppState } from 'src/app/core/store/app.reducer';
+import { AppStateWithFinancy } from 'src/app/core/store/financy/financy.reducer';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -27,7 +27,7 @@ export class DetalleComponent implements OnInit, OnDestroy{
     }
   })
   
-  constructor( private store: Store<AppState>, private ieS: IngresoEgresoService) { }
+  constructor( private store: Store<AppStateWithFinancy>, private ieS: IngresoEgresoService) { }
   
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class DetalleComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.financySubscription.unsubscribe();
+    this.financySubscription?.unsubscribe();
   }
 
   updateItem( uid: string) : void {

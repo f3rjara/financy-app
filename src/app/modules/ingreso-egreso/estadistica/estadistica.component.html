@@ -1,26 +1,7 @@
 <div class="row">
 
-  <div class="col-12 col-md-6 m-1">
-    <div class="card card-statistics">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="float-left">
-            <i class="fas fa-balance-scale text-warning icon-lg"></i>
-          </div>
-          <div class="float-right">
-            <p class="mb-0 text-right">Balance Total</p>
-            <div class="fluid-container">
-              <h3 [ngClass]="{'font-weight-medium text-right mb-0': true, 'text-danger': balance < 0 }">
-                {{ balance | currency: "COP":"symbol-narrow":"4.0" }} COP
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-12 col-md-6 m-1">
+  <div class="col-6 ">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -46,7 +27,7 @@
     </div>
   </div>
 
-  <div class="col-12 col-md-6 m-1">
+  <div class="col-6 ">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -71,6 +52,28 @@
       </div>
     </div>
   </div>
+
+  
+  <div class="col-12 m-1">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="fas fa-balance-scale text-warning icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Balance Total</p>
+            <div class="fluid-container">
+              <h3 [ngClass]="{'font-weight-medium text-right mb-0': true, 'text-danger': balance < 0 }">
+                {{ balance | currency: "COP":"symbol-narrow":"4.0" }} COP
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="row">
