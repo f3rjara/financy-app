@@ -15,7 +15,7 @@ import { AppState } from 'src/app/core/store/app.reducer';
 export class SidebarComponent implements OnInit, OnDestroy {
 
   public userSubscription: Subscription;
-  public userActive : User;
+  public userActive : User = { uid: '', name: '', email: '' };
   
   constructor( 
     private authApp: AuthService, 
